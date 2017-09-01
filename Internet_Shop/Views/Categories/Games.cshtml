@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Games";
+}
+
+@section scripts{
+    <script src="~/scripts/ShoppingCart.js"></script>
+    <script src="~/scripts/categories.js"></script>
+}
+
+<h2>Games</h2>
+
+<div id="productList" class="product-list">
+    @Html.ActionLink("PC Games", "ProductsList", "Product", routeValues: new { productType = "PC-Game" }, htmlAttributes: null)  <br>
+
+    <a href="/Product/ProductsList?productType=PC-Game">
+        <img src="/Content/Images/PC-Games.jpg" width="220"> <br>
+    </a>
+</div>
+
+<div id="productList" class="product-list">
+    @Html.ActionLink("Board Games", "ProductsList", "Product", routeValues: new { productType = "Board-Game" }, htmlAttributes: null)  <br>
+
+    <a href="/Product/ProductsList?productType=Board-Game">
+        <img src="/Content/Images/Board-Games.jpg" width="220"> <br>
+    </a>
+</div>

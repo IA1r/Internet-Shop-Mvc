@@ -1,0 +1,60 @@
+﻿@using Internet_Shop.ViewModels;
+@using Layer.Const;
+@model  ProductsViewModel
+
+
+
+<div style="width:100%">
+    <div style="width:49%;float:left">
+        <h2>@Model.Product.Name</h2>
+    </div>
+    <div style="width:49%; float:left;text-align:right">
+        <h2>@Model.Product.Characteristics[CharacteristicConst.Price]</h2>
+    </div>
+</div>
+
+<div style="clear:both">
+
+</div>
+
+<div>
+    <div style="float:left; min-width:220px">
+        <img src="@Model.Product.Characteristics[CharacteristicConst.Image]" />
+    </div>
+    <div style="float:left;width:58%;margin-left:5%">
+        <div style="font-size:20px">Product information: </div>
+
+        @Html.Label("Material", new { @class = "information" }):
+        @Model.Product.Characteristics[CharacteristicConst.Material] <br>
+
+        @Html.Label("Name", new { @class = "information" }):
+        @Model.Product.Name <br>
+
+        @Html.Label("Thickness", new { @class = "information" }):
+        @Model.Product.Characteristics[CharacteristicConst.Thickness] <br>
+
+        @Html.Label("Edge parts", new { @class = "information" }):
+        @Model.Product.Characteristics[CharacteristicConst.EdgeParts] <br>
+
+        @Html.Label("Rollers", new { @class = "information" }):
+        @Model.Product.Characteristics[CharacteristicConst.Rollers] <br>
+
+        @Html.Label("Description", new { @class = "information" }):
+        @Model.Product.Characteristics[CharacteristicConst.Description]<br>
+
+        @Html.Label("Features", new { @class = "information" }):
+        @Model.Product.Characteristics[CharacteristicConst.Features] <br>
+
+        @Html.Label("Width", new { @class = "information" }):
+        @Model.Product.Characteristics[CharacteristicConst.Width] <br>
+
+        @Html.Label("Height", new { @class = "information" }):
+        @Model.Product.Characteristics[CharacteristicConst.Height] <br>
+
+        @Html.Label("Depth", new { @class = "information" }):
+        @Model.Product.Characteristics[CharacteristicConst.Depth] <br>
+
+        @Html.Label("Color", new { @class = "information" }):
+        @Model.Product.Characteristics[CharacteristicConst.Color] <br>
+    </div>
+</div>

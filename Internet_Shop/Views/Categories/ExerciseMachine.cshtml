@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Exercise Machine";
+}
+@section scripts{
+    <script src="~/scripts/ShoppingCart.js"></script>
+    <script src="~/scripts/categories.js"></script>
+}
+
+<h2>Exercise Machine</h2>
+
+<div id="productList" class="product-list">
+    @Html.ActionLink("Treadmill", "ProductsList", "Product", routeValues: new { productType = "Treadmill" }, htmlAttributes: null)  <br>
+
+    <a href="/Product/ProductsList?productType=Treadmill">
+        <img src="/Content/Images/Treadmill.jpg" width="220"> <br>
+    </a>
+</div>
+
+<div id="productList" class="product-list">
+        @Html.ActionLink("ExerciseBike", "ProductsList", "Product", routeValues: new { productType = "ExerciseBike" }, htmlAttributes: null)  <br>
+
+    <a href="/Product/ProductsList?productType=ExerciseBike">
+        <img src="/Content/Images/indoor-bike.jpg" width="220"> <br>
+    </a>
+    </div>

@@ -1,0 +1,13 @@
+﻿@if (HttpContext.Current.User.Identity.Name == "")
+{
+    <p> Welcome, <b>Guest</b>! You can: </p>
+     <p> @Html.ActionLink("Login", "Login", "Account") or @Html.ActionLink("Registration", "Register", "Account") </p>
+}
+else
+{
+    <div>
+        Hello, <b>@HttpContext.Current.User.Identity.Name</b> !<br>
+        @Html.ActionLink("Logout", "Logout", "Account")
+    </div> 
+    
+}

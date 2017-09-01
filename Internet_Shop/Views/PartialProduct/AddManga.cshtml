@@ -1,0 +1,99 @@
+﻿@using Internet_Shop.ViewModels;
+@using Layer.Const;
+@model Internet_Shop.ViewModels.AddProductViewModel
+
+
+@using (Html.BeginForm("AddProduct", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <fieldset>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Product.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Product.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Product.ProductType)
+        </div>
+
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Product.ProductType, new { @Value = @Model.ProductType })
+        </div>
+
+        <div>
+            @Html.Label(CharacteristicConst.Image)
+        </div>
+        <div class="editor-field">
+            <input type="file" name="file" id="file" />
+        </div>
+
+        <div class="editor-label">
+            @Html.Label(CharacteristicConst.ReleaseDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Product.Characteristics["3"])
+        </div>
+
+        <div class="editor-label">
+            @Html.Label(CharacteristicConst.Language)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Product.Characteristics["4"])
+        </div>
+
+        <div class="editor-label">
+            @Html.Label(CharacteristicConst.Description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Product.Characteristics["5"])
+        </div>
+
+        <div class="editor-label">
+            @Html.Label(CharacteristicConst.Genre)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Product.Characteristics["28"])
+        </div>
+
+        <div class="editor-label">
+            @Html.Label(CharacteristicConst.Production)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Product.Characteristics["29"])
+        </div>
+
+        <div class="editor-label">
+            @Html.Label(CharacteristicConst.NumberOfPages)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Product.Characteristics["30"])
+        </div>
+
+        <div class="editor-label">
+            @Html.Label(CharacteristicConst.Author)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Product.Characteristics["31"])
+        </div>
+
+        <div class="editor-label">
+            @Html.Label(CharacteristicConst.Weight)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Product.Characteristics["32"])
+        </div>
+
+        <div class="editor-label">
+            @Html.Label(CharacteristicConst.Price)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Product.Characteristics["12"])
+        </div>
+
+        <p>
+            <input type="submit" value="Add Product" />
+        </p>
+    </fieldset>
+}

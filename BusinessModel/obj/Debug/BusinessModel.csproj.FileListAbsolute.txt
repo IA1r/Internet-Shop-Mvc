@@ -1,0 +1,14 @@
+D:\C#\Internet_Shop\BusinessModel\bin\Debug\BusinessModel.dll.config
+D:\C#\Internet_Shop\BusinessModel\bin\Debug\BusinessModel.dll
+D:\C#\Internet_Shop\BusinessModel\bin\Debug\BusinessModel.pdb
+D:\C#\Internet_Shop\BusinessModel\bin\Debug\EntityFramework.dll
+D:\C#\Internet_Shop\BusinessModel\bin\Debug\EntityFramework.SqlServer.dll
+D:\C#\Internet_Shop\BusinessModel\bin\Debug\EntityFramework.xml
+D:\C#\Internet_Shop\BusinessModel\bin\Debug\EntityFramework.SqlServer.xml
+D:\C#\Internet_Shop\BusinessModel\obj\Debug\BusinessModel.csprojResolveAssemblyReference.cache
+D:\C#\Internet_Shop\BusinessModel\obj\Debug\BusinessModel.dll
+D:\C#\Internet_Shop\BusinessModel\obj\Debug\BusinessModel.pdb
+D:\C#\Internet_Shop\BusinessModel\bin\Debug\DataModel.dll
+D:\C#\Internet_Shop\BusinessModel\bin\Debug\DataModel.pdb
+D:\C#\Internet_Shop\BusinessModel\bin\Debug\Layer.dll
+D:\C#\Internet_Shop\BusinessModel\bin\Debug\Layer.pdb

@@ -1,0 +1,39 @@
+﻿<ul class="ul-treefree ul-dropfree" >
+    <li>
+        Games
+        <ul style="display:none">
+            <li>@Html.ActionLink("PC Games", "ProductsList", "Product", routeValues: new { productType = "PC-Game" }, htmlAttributes: null)</li>
+            <li>@Html.ActionLink("Board Games", "ProductsList", "Product", routeValues: new { productType = "Board-Game" }, htmlAttributes: null)</li>
+        </ul>
+    </li>
+    <li>
+        Tables
+        <ul style="display:none">
+            <li>@Html.ActionLink("Computer Tables", "ProductsList", "Product", new { productType = "Computer-Table" }, null)</li>
+            <li>@Html.ActionLink("Folding Tables", "ProductsList", "Product", new { productType = "Folding-Table" }, null)</li>
+        </ul>
+    </li>
+    <li>@Html.ActionLink("Manga", "ProductsList", "Product", new { productType = "Manga" }, null)</li>
+    <li>
+        T-Shirt
+        <ul style="display:none">
+            <li>@Html.ActionLink("Male", "ProductsList", "Product", new { productType = "MaleT-shirt" }, null)</li>
+            <li>@Html.ActionLink("Female", "ProductsList", "Product", new { productType = "FemaleT-shirt" }, null)</li>
+        </ul>
+    </li>
+    <li>
+        Sport-Food
+        <ul style="display:none">
+            <li>@Html.ActionLink("Protein", "ProductsList", "Product", new { productType = "Protein" }, null)</li>
+            <li>@Html.ActionLink("Geyner", "ProductsList", "Product", new { productType = "Geyner" }, null)</li>
+        </ul>
+    </li>
+    <li>
+        Exercise machine
+        <ul style="display:none">
+            <li>@Html.ActionLink("Treadmill", "ProductsList", "Product", new { productType = "Treadmill" }, null)</li>
+            <li>@Html.ActionLink("ExerciseBike", "ProductsList", "Product", new { productType = "ExerciseBike" }, null)</li>
+        </ul>
+    </li>
+   
+</ul>

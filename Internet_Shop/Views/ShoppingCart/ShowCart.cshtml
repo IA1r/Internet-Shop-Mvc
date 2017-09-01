@@ -1,0 +1,69 @@
+﻿@using Internet_Shop.ViewModels
+@using Layer.Dto
+@model ShoppingCartViewModel
+
+@{
+    ViewBag.Title = "ShowCart";
+}
+
+@section scripts{
+    <script src="~/scripts/ShoppingCart.js"></script>
+    <script src="~/scripts/categories.js"></script>
+
+}
+
+
+<div id="shoppingCart">
+    @if (Model.Products != null)
+    {
+        <h2> @Model.Owner's Shopping Cart:</h2>
+        foreach (ProductsDto product in Model.Products)
+        {
+            <div>
+                <div style="margin-left:90%;font-size:20px">
+                    @product.Characteristics["Price"]
+                </div>
+                <div style="float:left; min-width:220px;height:33%;">
+                    @Html.ActionLink(product.Name, "Product", "Product", routeValues: new { id = product.Id, productType = product.ProductType }, htmlAttributes: new { @class = "productNameInCart" })  <br>
+                    <img src="@product.Characteristics["Image"]" height="300"> <br>
+
+                </div>
+                <div style="margin-left:35%; min-width:500px;margin-top:20px">
+
+                    @Html.Label("Name", new { @class = "information" }):
+                    @product.Name <br>
+
+                    @Html.Label("Description", new { @class = "information" }):
+                    @product.Characteristics["Description"] <br>
+                </div>
+                <div id="deleteItem" data-item="@product.Id" onclick="DeleteProduct(this)" style="font-size:20px;width:110px;margin-top:10%;margin-left:50%">
+                    Delete Item
+                </div>
+            </div>
+            <div style="clear:both">
+                <hr />
+            </div>
+        }
+        <div style="font-size:20px;">
+            Total Price:  @Model.TotalPrice
+        </div>
+
+
+        <div>
+            <input style="margin-left:90%" type="button" value="Purchase" onclick="PurchaseProduct()" />
+        </div>
+    }
+    else
+    {
+        <h2>  Shopping Cart:</h2>
+        <h3>is Empty..</h3>
+    }
+
+</div>
+
+<div id="tyForPurchase" style="text-align:center;font-size:20px;display:none">
+    We thank for purchase on our website.<br>
+    Within day our manager will contact you and will specify details transportations of a product.
+    We very much hope that you will be satisfied with the choice..<br>
+</div>
+

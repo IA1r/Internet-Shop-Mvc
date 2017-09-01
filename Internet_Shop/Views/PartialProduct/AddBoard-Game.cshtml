@@ -1,0 +1,84 @@
+﻿@using Internet_Shop.ViewModels;
+@model Internet_Shop.ViewModels.AddProductViewModel
+
+
+@using (Html.BeginForm("AddProduct", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <fieldset>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Product.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Product.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Product.ProductType)
+        </div>
+
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Product.ProductType, new { @Value = @Model.ProductType })
+        </div>
+
+        <div>
+            @Html.Label("Image")
+        </div>
+        <div class="editor-field">
+            <input type="file" name="file" id="file" />
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Developer")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Product.Characteristics["2"])
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("InterfaceLanguage")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Product.Characteristics["4"])
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Description")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Product.Characteristics["5"])
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("SuggestedAge")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Product.Characteristics["14"])
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Players")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Product.Characteristics["15"])
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Playtime")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Product.Characteristics["16"])
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Price")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Product.Characteristics["12"])
+        </div>
+
+        <p>
+            <input type="submit" value="Add Product" />
+        </p>
+    </fieldset>
+}

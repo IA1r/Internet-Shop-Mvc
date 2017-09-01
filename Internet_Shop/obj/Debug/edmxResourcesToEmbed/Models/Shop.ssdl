@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Shop.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PC_Games">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Image" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Developer" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ReleaseDate" Type="date" Nullable="false" />
+    <Property Name="InterfaceLanguage" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OS" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Processor" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Memory" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Graphics" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DirectX" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Network" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="Count" Type="int" Nullable="false" />
+    <Property Name="Price" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CategoryID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PC_Tables">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Image" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Material" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Thickness" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Rollers" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Features" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AdditionalCharacteristics" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Width" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Height" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Depth" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Color" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Guarantee" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Count" Type="int" Nullable="false" />
+    <Property Name="Category" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="ProductCart">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ShoppingCartID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Category" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ShoppingCart">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Owner" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_PC_Games_Categories">
+    <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+    <End Role="PC_Games" Type="Self.PC_Games" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PC_Games">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductCart_ShoppingCart">
+    <End Role="ShoppingCart" Type="Self.ShoppingCart" Multiplicity="1" />
+    <End Role="ProductCart" Type="Self.ProductCart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShoppingCart">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProductCart">
+        <PropertyRef Name="ShoppingCartID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ShopStoreContainer">
+    <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PC_Games" EntityType="Self.PC_Games" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PC_Tables" EntityType="Self.PC_Tables" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductCart" EntityType="Self.ProductCart" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShoppingCart" EntityType="Self.ShoppingCart" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_PC_Games_Categories" Association="Self.FK_PC_Games_Categories">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="PC_Games" EntitySet="PC_Games" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductCart_ShoppingCart" Association="Self.FK_ProductCart_ShoppingCart">
+      <End Role="ShoppingCart" EntitySet="ShoppingCart" />
+      <End Role="ProductCart" EntitySet="ProductCart" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

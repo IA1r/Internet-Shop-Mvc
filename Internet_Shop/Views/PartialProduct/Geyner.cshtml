@@ -1,0 +1,55 @@
+﻿@using Internet_Shop.ViewModels;
+@using Layer.Const;
+@model  ProductsViewModel
+
+
+
+<div style="width:100%">
+    <div style="width:49%;float:left">
+        <h2>@Model.Product.Name</h2>
+    </div>
+    <div style="width:49%; float:left;text-align:right">
+        <h2>@Model.Product.Characteristics[CharacteristicConst.Price]</h2>
+    </div>
+</div>
+
+<div style="clear:both">
+</div>
+
+<div>
+    <div style="float:left; min-width:220px;">
+        <img src="@Model.Product.Characteristics[CharacteristicConst.Image]" height="400" />
+    </div>
+    <div style="float:left;width:58%;margin-left:3%">
+        <div style="font-size:20px">Product information: </div>
+
+        @Html.Label("Name", new { @class = "information" }):
+        @Model.Product.Name <br>
+
+        @Html.Label("Gender", new { @class = "information" }):
+        @Model.Product.Characteristics[CharacteristicConst.Gender] <br>
+
+        @Html.Label("Taste", new { @class = "information" }):
+        @Model.Product.Characteristics[CharacteristicConst.Taste] <br>
+
+        @Html.Label("Weight", new { @class = "information" }):
+        @Model.Product.Characteristics[CharacteristicConst.Weight] <br>
+
+        @Html.Label("Portion", new { @class = "information" }):
+        @Model.Product.Characteristics[CharacteristicConst.Portion] <br>
+
+        @Html.Label("PortionsCount", new { @class = "information" }):
+        @Model.Product.Characteristics[CharacteristicConst.PortionsCount] <br>
+
+        @Html.Label("PortionContent", new { @class = "information" }):
+        <pre style="font-family: 'Segoe UI', Verdana, Helvetica, Sans-Serif">@Model.Product.Characteristics[CharacteristicConst.PortionContent].Replace(",","\n")
+        </pre>
+
+        @Html.Label("Manufacturer", new { @class = "information" }):
+        @Model.Product.Characteristics[CharacteristicConst.Manufacturer] <br>
+
+        @Html.Label("Description", new { @class = "information" }):
+        @Model.Product.Characteristics[CharacteristicConst.Description] <br>
+
+    </div>
+</div>

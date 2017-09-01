@@ -1,0 +1,59 @@
+﻿@using Internet_Shop.ViewModels;
+@model  ProductsViewModel
+
+@{
+    ViewBag.Title = Model.Product.Name;
+}
+
+@section scripts{
+    <script src="~/scripts/ShoppingCart.js"></script>
+    <script src="~/scripts/categories.js"></script>
+}
+
+
+@{
+    Html.RenderPartial("~/Views/PartialProduct/" + Model.Product.ProductType + ".cshtml", Model);
+}
+
+<div style="clear:both">
+    @if (@Model.UserName != "")
+    {
+        <input style="float:right" type="button" data-user="@Model.UserName" data-item="@Model.Product.Id" onclick="AddProductUser(this)" value="Add to Cart" />
+    }
+    else
+    {
+        if (@Model.CartID == "guest_" + HttpContext.Current.Request.AnonymousID)
+        {
+            <input style="float:right" type="button" data-item="@Model.Product.Id" onclick="AddProductAnonym(this)" value="Add to Cart" />
+        }
+        else
+        {
+            <input style="float:right" type="button" onclick="ShowForm()" value="Add to Cart" />
+
+            <div id="addToCartForm" style="border: 1px solid; width:200px;height:110px;padding:5%; display:none">
+
+                Identify yourself that we can contact you: <br>
+                <input id="name" type="text" value="Enter your name" onfocus="this.value = ''" />
+                <br>
+                <br>
+                <input id="phone" type="text" value="Enter your phone" onfocus="this.value = ''" />
+                <br>
+                <br>
+                <input style="float:right" type="button" data-item="@Model.Product.Id" onclick="AddProductAnonym(this)" value="Add to Cart" />
+
+            </div>
+        }
+    }
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div id="succes" style="border: 1px solid;width:100px;height:10px;padding:1%;float:right;display:none;">
+        Succes
+    </div>
+
+    <div style="clear:both;">
+    </div>
+</div>

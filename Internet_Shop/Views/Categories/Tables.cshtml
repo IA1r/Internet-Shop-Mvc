@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Tables";
+}
+
+@section scripts{
+    <script src="~/scripts/ShoppingCart.js"></script>
+    <script src="~/scripts/categories.js"></script>
+}
+
+<h2>Tables</h2>
+
+<div id="productList" class="product-list">
+    @Html.ActionLink("Computer Tables", "ProductsList", "Product", routeValues: new { productType = "Computer-Table" }, htmlAttributes: null)  <br>
+
+    <a href="/Product/ProductsList?productType=Computer-Table">
+        <img src="/Content/Images/Computer-Table.jpg" width="220"> <br>
+    </a>
+</div>
+
+<div id="productList" class="product-list">
+    @Html.ActionLink("Folding Tables", "ProductsList", "Product", routeValues: new { productType = "Folding-Table" }, htmlAttributes: null)  <br>
+
+    <a href="/Product/ProductsList?productType=Folding-Table">
+        <img src="/Content/Images/Folding-Table.jpg" width="220"> <br>
+    </a>
+</div>

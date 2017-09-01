@@ -1,0 +1,97 @@
+﻿@using Internet_Shop.ViewModels
+@using Layer.Dto
+@model PurchasedViewModel
+
+@{
+    ViewBag.Title = "PurchasedProducts";
+}
+
+@section scripts{
+    <script src="~/scripts/ShoppingCart.js"></script>
+    <script src="~/scripts/categories.js"></script>
+}
+
+<h2>PurchasedProducts</h2>
+
+@using (Html.BeginForm())
+{
+    <div style="min-height:50%">
+        <div style="float:left;margin:1%">
+            Today's buyers:<br>
+            <hr>
+            @if (Model.Names != null)
+            {
+                foreach (string name in Model.Names)
+                {
+                    @name <br>
+                }
+            }
+        </div>
+        <div style="margin-left: 10%;">
+            <input style="margin-left:2%;margin-top:1%;" name="name" type="text" value="buyer name..." onfocus="this.value = ''" />
+            <input type="submit" value="submit" />
+            <br>
+
+            @if (HttpContext.Current.Request.RequestType == "POST")
+            {
+                if (Model.Products != null)
+                {
+                    <table>
+                        <tr>
+                            <th>PurchasedID </th>
+                            <th>ProductID </th>
+                            <th>BuyerName </th>
+                            <th>Phone</th>
+                            <th>Date</th>
+                        </tr>
+                        @foreach (PurchasedDto product in Model.Products)
+                        {
+                            <tr data-item="@product.ProductId" onclick="GetProductInfo(this)">
+                                <td>@product.Id</td>
+                                <td>@product.ProductId</td>
+                                <td>@product.BuyerName</td>
+                                <td>@product.Phone</td>
+                                <td>@product.DateOfPurchase.ToString("dd/MM/yyyy")</td>
+                            </tr>
+                        }
+                    </table>
+                }
+                else
+                {
+                    <p style="font-size:20px">@Model.ErrorMessage </p>
+                }
+
+            }
+        </div>
+        <div id="productInforamtion" style="min-width:30%;float:left">
+
+            <div style="font-size:18px">
+                <label id="productName"></label><br>
+            </div>
+
+            <div style="float:left;">
+                <img id="productImage" src="" height="350"> <br>
+            </div>
+
+            <div style="float:right;font-size:20px">
+                <label id="producPrice"></label><br>
+            </div>
+
+            <div style="float:right;clear:right">
+                <label id="productType"></label><br>
+            </div>
+            <div style="clear:both">
+
+            </div>
+
+        </div>
+        <div style="clear:both">
+
+        </div>
+
+    </div>
+
+}
+
+
+

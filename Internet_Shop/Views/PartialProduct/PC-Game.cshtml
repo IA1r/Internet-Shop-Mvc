@@ -1,0 +1,64 @@
+﻿@using Internet_Shop.ViewModels;
+@using Layer.Const;
+@model  ProductsViewModel
+
+
+
+<div style="width:100%">
+    <div style="width:49%;float:left">
+        <h2>@Model.Product.Name</h2>
+    </div>
+    <div style="width:49%; float:left;text-align:right">
+        <h2>@Model.Product.Characteristics[CharacteristicConst.Price]</h2>
+    </div>
+</div>
+<div style="clear:both">
+</div>
+
+<div>
+    <div style="float:left; min-width:220px">
+        <img src="@Model.Product.Characteristics[CharacteristicConst.Image]" height="400" />
+    </div>
+    <div style="float:left;width:700px;margin-left:3%">
+        <div style="font-size:20px">Product information: </div>
+
+        @Html.Label("Developer", new { @class = "information" }):
+        @Model.Product.Characteristics[CharacteristicConst.Developer] <br>  
+
+        @Html.Label("Name", new { @class = "information" }):
+        @Model.Product.Name <br>
+
+        @Html.Label("InterfaceLanguage", new { @class = "information" }):
+        @Model.Product.Characteristics[CharacteristicConst.InterfaceLanguage] <br>  
+
+        @Html.Label("ReleaseDate", new { @class = "information" }):
+        @Model.Product.Characteristics[CharacteristicConst.ReleaseDate] <br>  
+
+        @Html.Label("Description", new { @class = "information" }):
+        @Model.Product.Characteristics[CharacteristicConst.Description] <br>  
+
+        <br>
+        <br>
+        <br>
+        System requirements:<br>
+
+        @Html.Label("OS", new { @class = "information" }):
+        @Model.Product.Characteristics[CharacteristicConst.OS] <br>  
+
+        @Html.Label("Processor", new { @class = "information" }):
+        @Model.Product.Characteristics[CharacteristicConst.Processor] <br>  
+
+        @Html.Label("Memory", new { @class = "information" }):
+        @Model.Product.Characteristics[CharacteristicConst.Memory] <br>  
+
+        @Html.Label("Graphics", new { @class = "information" }):
+        @Model.Product.Characteristics[CharacteristicConst.Graphics] <br>  
+
+        @Html.Label("DirectX", new { @class = "information" }):
+        @Model.Product.Characteristics[CharacteristicConst.DirectX] <br>  
+
+        @Html.Label("Network", new { @class = "information" }):
+        @Model.Product.Characteristics[CharacteristicConst.Network] <br>  
+
+    </div>
+</div>

@@ -1,0 +1,12 @@
+D:\C#\Internet_Shop\DataModel\obj\Debug\DataModel.csprojResolveAssemblyReference.cache
+D:\C#\Internet_Shop\DataModel\bin\Debug\DataModel.dll.config
+D:\C#\Internet_Shop\DataModel\bin\Debug\DataModel.dll
+D:\C#\Internet_Shop\DataModel\bin\Debug\DataModel.pdb
+D:\C#\Internet_Shop\DataModel\bin\Debug\EntityFramework.dll
+D:\C#\Internet_Shop\DataModel\bin\Debug\EntityFramework.SqlServer.dll
+D:\C#\Internet_Shop\DataModel\bin\Debug\EntityFramework.xml
+D:\C#\Internet_Shop\DataModel\bin\Debug\EntityFramework.SqlServer.xml
+D:\C#\Internet_Shop\DataModel\obj\Debug\DataModel.dll
+D:\C#\Internet_Shop\DataModel\obj\Debug\DataModel.pdb
+D:\C#\Internet_Shop\DataModel\bin\Debug\Layer.dll
+D:\C#\Internet_Shop\DataModel\bin\Debug\Layer.pdb

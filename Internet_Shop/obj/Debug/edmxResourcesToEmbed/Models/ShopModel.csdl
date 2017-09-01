@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Shop" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ProductCart">
+    <Key>
+      <PropertyRef Name="ProductCartID" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="ShoppingCartID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProductCartID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Product" Relationship="Shop.FK_ProductCart_Product" FromRole="ProductCart" ToRole="Product" />
+    <NavigationProperty Name="ShoppingCart" Relationship="Shop.FK_ProductCart_ShoppingCart1" FromRole="ProductCart" ToRole="ShoppingCart" />
+  </EntityType>
+  <EntityType Name="ShoppingCart">
+    <Key>
+      <PropertyRef Name="ShoppingCartID" />
+    </Key>
+    <Property Name="Owner" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ShoppingCartID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ProductCarts" Relationship="Shop.FK_ProductCart_ShoppingCart1" FromRole="ShoppingCart" ToRole="ProductCart" />
+  </EntityType>
+  <EntityContainer Name="ShopEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ProductCarts" EntityType="Self.ProductCart" />
+    <EntitySet Name="ShoppingCarts" EntityType="Self.ShoppingCart" />
+    <EntitySet Name="Characteristics" EntityType="Shop.Characteristic" />
+    <EntitySet Name="Products" EntityType="Shop.Product" />
+    <EntitySet Name="ProductCharacteristics" EntityType="Shop.ProductCharacteristic" />
+    <AssociationSet Name="FK_ProductCharacteristic_Characteristic" Association="Shop.FK_ProductCharacteristic_Characteristic">
+      <End Role="Characteristic" EntitySet="Characteristics" />
+      <End Role="ProductCharacteristic" EntitySet="ProductCharacteristics" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductCharacteristic_Product" Association="Shop.FK_ProductCharacteristic_Product">
+      <End Role="Product1" EntitySet="Products" />
+      <End Role="ProductCharacteristic" EntitySet="ProductCharacteristics" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductCart_Product" Association="Shop.FK_ProductCart_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ProductCart" EntitySet="ProductCarts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductCart_ShoppingCart1" Association="Shop.FK_ProductCart_ShoppingCart1">
+      <End Role="ShoppingCart" EntitySet="ShoppingCarts" />
+      <End Role="ProductCart" EntitySet="ProductCarts" />
+    </AssociationSet>
+    <EntitySet Name="Purchaseds" EntityType="Shop.Purchased" />
+    <AssociationSet Name="FK_Purchased_Product1" Association="Shop.FK_Purchased_Product1">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Purchased" EntitySet="Purchaseds" />
+    </AssociationSet>
+    <EntitySet Name="Roles" EntityType="Shop.Role" />
+    <EntitySet Name="Users" EntityType="Shop.User" />
+    <AssociationSet Name="FK_User_Role" Association="Shop.FK_User_Role">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Characteristic">
+    <Key>
+      <PropertyRef Name="CharacteristicID" />
+    </Key>
+    <Property Name="CharacteristicID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ProductCharacteristics" Relationship="Shop.FK_ProductCharacteristic_Characteristic" FromRole="Characteristic" ToRole="ProductCharacteristic" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ProductCharacteristics" Relationship="Shop.FK_ProductCharacteristic_Product" FromRole="Product1" ToRole="ProductCharacteristic" />
+    <NavigationProperty Name="ProductCarts" Relationship="Shop.FK_ProductCart_Product" FromRole="Product" ToRole="ProductCart" />
+    <NavigationProperty Name="Purchaseds" Relationship="Shop.FK_Purchased_Product1" FromRole="Product" ToRole="Purchased" />
+    <Property Name="ProductType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ProductCharacteristic">
+    <Key>
+      <PropertyRef Name="ProductCharacteristicID" />
+    </Key>
+    <Property Name="ProductCharacteristicID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="CharacteristicID" Type="Int32" Nullable="false" />
+    <Property Name="CharacteristicValue" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Characteristic" Relationship="Shop.FK_ProductCharacteristic_Characteristic" FromRole="ProductCharacteristic" ToRole="Characteristic" />
+    <NavigationProperty Name="Product" Relationship="Shop.FK_ProductCharacteristic_Product" FromRole="ProductCharacteristic" ToRole="Product1" />
+  </EntityType>
+  <Association Name="FK_ProductCharacteristic_Characteristic">
+    <End Type="Shop.Characteristic" Role="Characteristic" Multiplicity="1" />
+    <End Type="Shop.ProductCharacteristic" Role="ProductCharacteristic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Characteristic">
+        <PropertyRef Name="CharacteristicID" />
+      </Principal>
+      <Dependent Role="ProductCharacteristic">
+        <PropertyRef Name="CharacteristicID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductCharacteristic_Product">
+    <End Type="Shop.Product" Role="Product1" Multiplicity="1" />
+    <End Type="Shop.ProductCharacteristic" Role="ProductCharacteristic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product1">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="ProductCharacteristic">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductCart_Product">
+    <End Type="Shop.Product" Role="Product" Multiplicity="1" />
+    <End Type="Shop.ProductCart" Role="ProductCart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="ProductCart">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductCart_ShoppingCart1">
+    <End Type="Shop.ShoppingCart" Role="ShoppingCart" Multiplicity="1" />
+    <End Type="Shop.ProductCart" Role="ProductCart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShoppingCart">
+        <PropertyRef Name="ShoppingCartID" />
+      </Principal>
+      <Dependent Role="ProductCart">
+        <PropertyRef Name="ShoppingCartID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Purchased">
+    <Key>
+      <PropertyRef Name="PurchasedID" />
+    </Key>
+    <Property Name="PurchasedID" Type="Int32" Nullable="false" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="BuyerName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DateOfPurchase" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Product" Relationship="Shop.FK_Purchased_Product1" FromRole="Purchased" ToRole="Product" />
+    <Property Name="Phone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_Purchased_Product1">
+    <End Type="Shop.Product" Role="Product" Multiplicity="1" />
+    <End Type="Shop.Purchased" Role="Purchased" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="Purchased">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Users" Relationship="Shop.FK_User_Role" FromRole="Role" ToRole="User" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Login" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="14" FixedLength="false" Unicode="true" />
+    <Property Name="ConfirmPassword" Type="String" Nullable="false" MaxLength="14" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="RoleID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Role" Relationship="Shop.FK_User_Role" FromRole="User" ToRole="Role" />
+  </EntityType>
+  <Association Name="FK_User_Role">
+    <End Type="Shop.Role" Role="Role" Multiplicity="1" />
+    <End Type="Shop.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

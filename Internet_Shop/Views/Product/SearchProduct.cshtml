@@ -1,0 +1,35 @@
+﻿@using Layer.Dto
+@model ProductsDto[]
+
+@{
+    int counter = 1;
+    string space = ". ";
+}
+
+<div id="searchResults" style="width:150px">
+
+    @if (Model == null || Model.Count() == 0)
+    {
+        <div>
+            <fieldset>
+                <p>No results.</p>
+            </fieldset>
+        </div>
+    }
+    else
+    {
+        <br>
+        foreach (ProductsDto product in Model)
+        {
+            <div style="float: left; width: 300px;">
+
+                @counter
+                @space
+                @Html.ActionLink(product.Name, "Product", "Product", routeValues: new { id = product.Id, productType = product.ProductType }, htmlAttributes: null)  <br>
+
+            </div>
+            counter++;
+        }
+        <br>
+    }
+</div>

@@ -1,0 +1,45 @@
+﻿@using Internet_Shop.ViewModels;
+@using Layer.Const
+@model  ProductsViewModel
+
+
+
+<div style="width:100%">
+    <div style="width:49%;float:left">
+        <h2>@Model.Product.Name</h2>
+    </div>
+    <div style="width:49%; float:left;text-align:right">
+        <h2>@Model.Product.Characteristics[CharacteristicConst.Price]</h2>
+    </div>
+</div>
+
+<div style="clear:both">
+
+</div>
+
+<div>
+    <div style="float:left; min-width:220px">
+        <img src="@Model.Product.Characteristics[CharacteristicConst.Image]" />
+    </div>
+    <div style="width:58%;float:left;margin-left:3%">
+        <div style="font-size:20px">Product information: </div>
+
+        @Html.Label("SuggestedAge", new { @class = "information" }):
+        @Model.Product.Characteristics[CharacteristicConst.SuggestedAge] <br>
+
+        @Html.Label("Name", new { @class = "information" }):
+        @Model.Product.Name <br>
+
+        @Html.Label("InterfaceLanguage", new { @class = "information" }):
+        @Model.Product.Characteristics[CharacteristicConst.InterfaceLanguage] <br>
+
+        @Html.Label("Players", new { @class = "information" }):
+        @Model.Product.Characteristics[CharacteristicConst.Players] <br>
+
+        @Html.Label("Playtime", new { @class = "information" }):
+        @Model.Product.Characteristics[CharacteristicConst.Playtime] <br>
+
+        @Html.Label("Description", new { @class = "information" }):
+        @Model.Product.Characteristics[CharacteristicConst.Description] <br>
+    </div>
+</div>

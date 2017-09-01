@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Sport Food";
+}
+
+@section scripts{
+    <script src="~/scripts/ShoppingCart.js"></script>
+    <script src="~/scripts/categories.js"></script>
+}
+
+<h2>Sport Food</h2>
+
+<div id="productList" class="product-list">
+    @Html.ActionLink("Protein", "ProductsList", "Product", routeValues: new { productType = "Protein" }, htmlAttributes: null)  <br>
+
+    <a href="/Product/ProductsList?productType=Protein">
+        <img src="/Content/Images/Protein.jpg" width="220"> <br>
+    </a>
+</div>
+
+<div id="productList" class="product-list">
+    @Html.ActionLink("Geyner", "ProductsList", "Product", routeValues: new { productType = "Geyner" }, htmlAttributes: null)  <br>
+
+    <a href="/Product/ProductsList?productType=Geyner">
+        <img src="/Content/Images/geyner.jpg" width="220"> <br>
+    </a>
+</div>

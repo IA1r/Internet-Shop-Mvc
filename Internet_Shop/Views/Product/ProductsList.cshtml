@@ -1,0 +1,43 @@
+﻿@using Internet_Shop.ViewModels;
+@using Layer.Dto;
+@model ProductsViewModel
+
+
+
+@{
+    ViewBag.Title = "ProductList";
+}
+
+@section scripts{
+    <script src="~/scripts/ShoppingCart.js"></script>
+    <script src="~/scripts/categories.js"></script>
+}
+
+
+
+
+@foreach (ProductsDto product in Model.Products)
+{
+
+    <div id="productList" class="product-list">
+        @Html.ActionLink(product.Name, "Product", "Product", routeValues: new { id = product.Id }, htmlAttributes: null)  <br>
+
+        <a href="/Product/Product/@product.Id">
+            <img src="@product.Characteristics["Image"]" width="200"> <br>
+        </a>
+
+        <div class="price">
+            @product.Characteristics["Price"]
+        </div>
+    </div>
+}
+
+
+<div class="block">
+
+</div>
+<div style="clear:both;">
+</div>
+
+
+

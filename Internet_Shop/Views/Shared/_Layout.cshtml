@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/content/themes/base/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/Scripts/categories.js")
+</head>
+<body>
+    <div id="header">
+        <div class="headerText">
+            <a href="/Product/HomePage" style="color: black; text-decoration:none;font-size:50px">Internet Shop</a>
+        </div>
+
+        <div style="float:right">
+            @Html.Partial("Greeting")
+            <a href="/ShoppingCart/ShowCart">ShoppingCart</a>  <br>       
+            <a id="options" href="/Product/Options">Options</a>
+        </div>
+
+        <div style="float:left;width:61%;margin-top:2%;">
+            <div class="blockCategories">
+                <a class="blockCategoriesLink" href="/Categories/Games">Games</a>
+            </div>
+
+
+            <div class="blockCategories">
+                <a class="blockCategoriesLink" href="/Categories/Tables">Tables</a>
+            </div>
+
+
+            <div class="blockCategories">
+                <a class="blockCategoriesLink" href="/Product/ProductsList?productType=Manga">Manga</a>
+            </div>
+
+
+            <div class="blockCategories">
+                <a class="blockCategoriesLink" href="/Categories/Shirts">T-Shirt</a>
+            </div>
+
+
+            <div class="blockCategories">
+                <a class="blockCategoriesLink" href="/Categories/SportFood">Sport-Food</a>
+            </div>
+
+
+            <div class="blockCategories">
+                <a class="blockCategoriesLink" href="/Categories/ExerciseMachine">Exercise machine</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="categoriesTree">
+        Categories Tree:
+
+        @Html.Partial("~/Views/Product/CategoriesTree.cshtml")
+    </div>
+
+    <div class="searchProduct">
+        Search Product:
+        @using (Ajax.BeginForm("SearchProduct", "Product", null, new AjaxOptions { UpdateTargetId = "product-results" }))
+        {
+            <input id="searchProductField" type="text" name="keyword" value="search..." onfocus="this.value = '';" onclick="DisableSearch()">
+            <br><br>
+            <input id="searchButton" type="submit" value="Search" />
+        }
+        <br>
+        <div id="product-results">
+        </div>
+    </div>
+
+
+    <div class="body">
+        @RenderBody()
+    </div>
+
+    <div style="clear:both">
+
+    </div>
+
+    <div id="footer">
+        Internet-Shop / ASP.NET MVC <br>
+        Created by Andrew Gumenyuk
+    </div>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
